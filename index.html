@@ -16,6 +16,51 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <base target="_blank" />
+        <!-- Language switcher styles -->
+        <style>
+            /* Show only the active language content */
+            body:not(.lang-ja) .lang-ja { display: none !important; }
+            body.lang-ja .lang-en { display: none !important; }
+
+            /* Language toggle button (bottom-left, sits inside the sideNav area on desktop) */
+            #langToggle {
+                position: fixed;
+                bottom: 1rem;
+                left: 1rem;
+                z-index: 1030;
+                background: #fff;
+                color: rgb(69, 106, 138);
+                border: 2px solid rgba(255, 255, 255, 0.85);
+                border-radius: 2rem;
+                padding: 0.4rem 1.1rem;
+                font-family: 'Saira Extra Condensed', -apple-system, sans-serif;
+                font-weight: 700;
+                letter-spacing: 0.08rem;
+                text-transform: uppercase;
+                font-size: 1rem;
+                line-height: 1.2;
+                cursor: pointer;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+                transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+            }
+            #langToggle:hover,
+            #langToggle:focus-visible {
+                background: rgb(52, 84, 111);
+                color: #fff;
+                border-color: rgb(52, 84, 111);
+                outline: none;
+            }
+            #langToggle:focus {
+                outline: none;
+            }
+            /* On desktop, center horizontally inside the 17rem sideNav (like the nav items) */
+            @media (min-width: 992px) {
+                #langToggle {
+                    left: 8.5rem;
+                    transform: translateX(-50%);
+                }
+            }
+        </style>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -27,16 +72,21 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#accomplishment">Accomplishment</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li> 
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about"><span class="lang-en">About</span><span class="lang-ja">私について</span></a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience"><span class="lang-en">Experience</span><span class="lang-ja">職歴</span></a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#accomplishment"><span class="lang-en">Accomplishment</span><span class="lang-ja">実績</span></a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education"><span class="lang-en">Education</span><span class="lang-ja">学歴</span></a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills"><span class="lang-en">Skills</span><span class="lang-ja">スキル</span></a></li>
                     <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li> -->
                     <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li> -->
                 </ul>
             </div>
         </nav>
+        <!-- Language switcher button (bottom-left, over the sideNav area on desktop)-->
+        <button id="langToggle" type="button" aria-label="Switch language" onclick="toggleLang()">
+            <span class="lang-en">日本語</span>
+            <span class="lang-ja">English</span>
+        </button>
         <!-- Page Content-->
         <div class="container-fluid p-0">
             <!-- About-->
@@ -53,12 +103,19 @@
 						<!--<br/>(86)15692141300-->
                         <br/><i class="fa-regular fa-envelope"></i><a href="mailto:casper_teo@hotmail.com">casper_teo@hotmail.com</a>
                     </div>
-                    <p class="lead mb-5">A strong computer-engineering professional who is confident with object oriented programming and API integration, algorithm, relational databases and SQL. Skilled in ASP.Net(C#), Java, PHP, MySQL, SQL Server, DB2, Cascading Style Sheets (CSS), and HTML.
+                    <p class="lead mb-5 lang-en">A strong computer-engineering professional who is confident with object oriented programming and API integration, algorithm, relational databases and SQL. Skilled in ASP.Net(C#), Java, PHP, MySQL, SQL Server, DB2, Cascading Style Sheets (CSS), and HTML.
 					<br/><br/>
 					Relocated to Shanghai China since 2015 and attached in the marketing and advertising industry. Experienced with Website, Mobile APP development, E-commerce, shopping cart system with payment gateway integration, and Wechat official account back-end development.
 					<br/><br/>
 					Relocated to Tokyo Japan since 2025, currently attached with a HR solutions company, focusing on Human Resource Management System, Payroll module and other API customization development.
 					</p>
+                    <p class="lead mb-5 lang-ja">コンピューターエンジニアリングを基盤とし、オブジェクト指向プログラミング、API連携、アルゴリズム、リレーショナルデータベースおよびSQLに精通。ASP.NET（C#）、Java、PHP、MySQL、SQL Server、DB2、CSS、HTMLを用いた開発経験を有する。
+					<br/><br/>
+					2015年より中国・上海に移住し、マーケティング・広告業界にてWebサイト、モバイルアプリ、ECサイト、ショッピングカートシステム（決済連携）、WeChat公式アカウントのバックエンド開発に従事。
+					<br/><br/>
+					2025年より日本・東京に移住し、現在はHRソリューション企業にてHuman Resource Management System（HRMS）、給与モジュール、各種APIカスタマイズ開発を担当しています。
+					</p>
+
                     <div class="social-icons">
                         <a class="social-icon" href="https://www.linkedin.com/in/casper-teo" target="new"><i class="fab fa-linkedin-in"></i></a>
                         <a class="social-icon" href="https://github.com/CasperTeo" target="new"><i class="fab fa-github"></i></a>
@@ -69,144 +126,163 @@
             </section>
             <hr class="m-0" />
             <!-- Experience-->
-             <section class="resume-section" id="experience"> 
-                 <div class="resume-section-content"> 
-                     <h2 class="mb-5">Experience</h2> 
+             <section class="resume-section" id="experience">
+                 <div class="resume-section-content">
+                     <h2 class="mb-5"><span class="lang-en">Experience</span><span class="lang-ja">職歴</span></h2>
 
-					<div class="d-flex flex-column flex-md-row justify-content-between mb-5"> 
-                         <div class="flex-grow-1"> 
-                             <h3 class="mb-0">Senior Software Developer</h3> 
-                             <div class="subheading mb-3"><a href ="https://www.biposervice.com/">BIPO Service Shanghai Limited(Shanghai China)</a></div> 
-                             <p>
-                                 Responsible on Human Resource Management System (HRMS)'s Interface module, API integration, Personnel module and Payroll module developments. In Payroll engine, mainly focusing on China Mainland, Japan and UK Payroll countries.								 
+					<div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                         <div class="flex-grow-1">
+                             <h3 class="mb-0"><span class="lang-en">Senior Software Developer</span><span class="lang-ja">シニアソフトウェア開発者</span></h3>
+                             <div class="subheading mb-3"><a href ="https://www.biposervice.com/"><span class="lang-en">BIPO Service Shanghai Limited(Shanghai China)</span><span class="lang-ja">BIPO Service Shanghai Limited（中国・上海）</span></a></div>
+                             <p class="lang-en">
+                                 Responsible on Human Resource Management System (HRMS)'s Interface module, API integration, Personnel module and Payroll module developments. In Payroll engine, mainly focusing on China Mainland, Japan and UK Payroll countries.
                              </p>
-							<div class="subheading mb-3"><a href ="https://www.biposervice.com/">BIPO Service Japan株式会社(Tokyo Japan)</a></div> 							 
-							<p>
-                                 Human Resource Management System（HRMS）におけるAPI連携、人事モジュール、給与モジュールの開発を担当し、給与計算システムでは中国、日本、英国向けの給与計算機能を主に担当しました。
+                             <p class="lang-ja">
+                                 Human Resource Management System（HRMS）のインターフェースモジュール、API連携、従業員管理モジュールおよび給与モジュールの開発を担当しました。給与エンジンでは、中国本土、日本、英国向けの給与計算機能を中心に従事。
                              </p>
-                         </div> 
-                         <div class="flex-shrink-0"><span class="text-primary">June 2022 – Present</span></div> 
+							<div class="subheading mb-3"><a href ="https://www.biposervice.com/"><span class="lang-en">BIPO Service Japan Co., Ltd. (Tokyo Japan)</span><span class="lang-ja">BIPO Service Japan株式会社（東京・日本）</span></a></div>
+							<p class="lang-en">
+                                 Responsible for API integration and the development of the Personnel and Payroll modules within the Human Resource Management System (HRMS). In the Payroll module, support payroll reporting and lead payroll calculation logic for China, Japan, and the UK.
+                             </p>
+                             <p class="lang-ja">
+                                 Human Resource Management System（HRMS）のAPI連携および従業員管理モジュール・給与モジュールの開発を担当。給与モジュールでは、中国・日本・英国向けの給与計算ロジックの設計・実装を主導し、給与レポート機能の開発支援も行っている。
+                             </p>
+                         </div>
+                         <div class="flex-shrink-0"><span class="text-primary"><span class="lang-en">June 2022 – Present</span><span class="lang-ja">2022年6月 〜 現在</span></span></div>
                      </div>
-					 
-                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5"> 
-                         <div class="flex-grow-1"> 
-                             <h3 class="mb-0">Backend Developer</h3> 
-                             <div class="subheading mb-3"><a href ="https://www.fugumobile.cn/">FuguMobile Ltd. (Shanghai China)</a></div> 
-                             <p>
-                                 Responsible on Wechat backend development, Miniprogram, payment gateway integration, backend development such as prepare API, 
+
+                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                         <div class="flex-grow-1">
+                             <h3 class="mb-0"><span class="lang-en">Backend Developer</span><span class="lang-ja">バックエンド開発者</span></h3>
+                             <div class="subheading mb-3"><a href ="https://www.fugumobile.cn/"><span class="lang-en">FuguMobile Ltd. (Shanghai China)</span><span class="lang-ja">FuguMobile Ltd.（中国・上海）</span></a></div>
+                             <p class="lang-en">
+                                 Responsible on Wechat backend development, Miniprogram, payment gateway integration, backend development such as prepare API,
                                  Database structure, build content manage system (CMS), unit testing, migration, deploy and launching. <br /><br />
-                                 Project Manage: Estimate and prepare project timeline and project planning and milestone meetings. 
+                                 Project Manage: Estimate and prepare project timeline and project planning and milestone meetings.
                                  In charge on interior teams, projects progress and meeting, communicate and collaborate
                                  with team members.
-                             </p> 
-                         </div> 
-                         <div class="flex-shrink-0"><span class="text-primary">July 2015 – April 2022</span></div> 
+                             </p>
+                             <p class="lang-ja">
+                                 WeChatのバックエンド開発、ミニプログラム、決済ゲートウェイ連携、API準備、データベース構造、CMS構築、単体テスト、マイグレーション、デプロイ・リリースなどを担当。<br /><br />
+                                 プロジェクトマネジメント：プロジェクトのタイムライン見積り・計画・マイルストーン会議の準備。社内チーム・プロジェクト進捗・会議を統括し、チームメンバーとのコミュニケーションと協働を推進しました。
+                             </p>
+                         </div>
+                         <div class="flex-shrink-0"><span class="text-primary"><span class="lang-en">July 2015 – April 2022</span><span class="lang-ja">2015年7月 〜 2022年4月</span></span></div>
                      </div>
-					 
-                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5"> 
-                         <div class="flex-grow-1"> 
-                             <h3 class="mb-0">Application Specialist</h3> 
-                             <div class="subheading mb-3"><a href ="https://www.dynafront.com/">DynaFront Systems Berhad (Kuala Lumpur Malaysia)</a></div> 
-                             <p>Maintained <a href ="https://www.allianzstarnetwork.com/">Allianz Star Network</a> website, admin portal, CMS portal, and certain backend processes such as data patching, extracted large data report from DB for analysis & data backup process.<br/><br/>
+
+                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                         <div class="flex-grow-1">
+                             <h3 class="mb-0"><span class="lang-en">Application Specialist</span><span class="lang-ja">アプリケーションスペシャリスト</span></h3>
+                             <div class="subheading mb-3"><a href ="https://www.dynafront.com/"><span class="lang-en">DynaFront Systems Berhad (Kuala Lumpur Malaysia)</span><span class="lang-ja">DynaFront Systems Berhad（マレーシア・クアラルンプール）</span></a></div>
+                             <p class="lang-en">Maintained <a href ="https://www.allianzstarnetwork.com/">Allianz Star Network</a> website, admin portal, CMS portal, and certain backend processes such as data patching, extracted large data report from DB for analysis & data backup process.<br/><br/>
                                 Developed enhancements as per client requests, monthly closing & customer supports.
-                             </p> 
-                         </div> 
-                         <div class="flex-shrink-0"><span class="text-primary">July 2012 – May 2015</span></div> 
-                     </div> 
-                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5"> 
-                         <div class="flex-grow-1"> 
-                             <h3 class="mb-0">Junior Software Engineer</h3> 
-                             <div class="subheading mb-3"><a href ="https://www.qinetics.net/"> Qinetics Solutions Berhad (Malaysia)</a></div>
-                             <p>Supported and enhanced the <a href ="https://www.webnic.cc/">Webnic</a> systems (domain name registrar system) in Qinetics.<br/><br/>
-                                Prepared & updated security plan, system setup, disaster plan, service monitoring plan, test cases documents for <a href ="https://www.webnic.cc/">Webnic</a> change requests.</p> 
-                         </div> 
-                         <div class="flex-shrink-0"><span class="text-primary">March 2010 – May 2012</span></div> 
-                     </div> 
-                 </div> 
+                             </p>
+                             <p class="lang-ja"><a href ="https://www.allianzstarnetwork.com/">Allianz Star Network</a> のウェブサイト、管理ポータル、CMSポータル、およびデータパッチ、分析用大規模データレポートのDB抽出、データバックアップ処理などのバックエンド業務を保守。<br/><br/>
+                                クライアント要望に応じた機能拡張の開発、月次締め処理、カスタマーサポートを担当しました。
+                             </p>
+                         </div>
+                         <div class="flex-shrink-0"><span class="text-primary"><span class="lang-en">July 2012 – May 2015</span><span class="lang-ja">2012年7月 〜 2015年5月</span></span></div>
+                     </div>
+                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                         <div class="flex-grow-1">
+                             <h3 class="mb-0"><span class="lang-en">Junior Software Engineer</span><span class="lang-ja">ジュニアソフトウェアエンジニア</span></h3>
+                             <div class="subheading mb-3"><a href ="https://www.qinetics.net/"><span class="lang-en"> Qinetics Solutions Berhad (Malaysia)</span><span class="lang-ja"> Qinetics Solutions Berhad（マレーシア）</span></a></div>
+                             <p class="lang-en">Supported and enhanced the <a href ="https://www.webnic.cc/">Webnic</a> systems (domain name registrar system) in Qinetics.<br/><br/>
+                                Prepared & updated security plan, system setup, disaster plan, service monitoring plan, test cases documents for <a href ="https://www.webnic.cc/">Webnic</a> change requests.</p>
+                             <p class="lang-ja">Qinetics における <a href ="https://www.webnic.cc/">Webnic</a> システム（ドメイン名レジストラシステム）の保守と機能拡張を担当。<br/><br/>
+                                <a href ="https://www.webnic.cc/">Webnic</a> の変更要求に対するセキュリティプラン、システムセットアップ、災害対策プラン、サービス監視プラン、テストケース書類の作成・更新を担当しました。</p>
+                         </div>
+                         <div class="flex-shrink-0"><span class="text-primary"><span class="lang-en">March 2010 – May 2012</span><span class="lang-ja">2010年3月 〜 2012年5月</span></span></div>
+                     </div>
+                 </div>
              </section>
             <hr class="m-0" />
 
             <!-- Accomplishment-->
-            <section class="resume-section" id="accomplishment"> 
-                 <div class="resume-section-content"> 
-                     <h2 class="mb-5">Accomplishment</h2> 
+            <section class="resume-section" id="accomplishment">
+                 <div class="resume-section-content">
+                     <h2 class="mb-5"><span class="lang-en">Accomplishment</span><span class="lang-ja">実績</span></h2>
                      <!--<div class="subheading mb-3">Project</div> -->
 
-                     <ul class="fa-ul mb-0"> 
-                         <li> 
-                             <span class="fa-li"><i class="fas fa-check"></i></span> 
+                     <ul class="fa-ul mb-0">
+                         <li>
+                             <span class="fa-li"><i class="fas fa-check"></i></span>
                              <a href="https://apps.apple.com/us/app/%E5%BC%80%E5%88%A9%E5%B0%8F%E6%99%BA/id1437376161">
-                                 United Technology Carrier Corporation(UTC) China Wechat Official Account & iPad Sale Tools development
+                                 <span class="lang-en">United Technology Carrier Corporation(UTC) China Wechat Official Account & iPad Sale Tools development</span>
+                                 <span class="lang-ja">United Technology Carrier Corporation(UTC) 中国 WeChat公式アカウント及びiPadセールスツール開発</span>
                              </a>
-                         </li> 
-                         <li> 
-                             <span class="fa-li"><i class="fas fa-check"></i></span> 
+                         </li>
+                         <li>
+                             <span class="fa-li"><i class="fas fa-check"></i></span>
                              <a href="https://www.linkedin.com/posts/casper-teo_fugumobile-wechat-miniprogram-activity-6593688267760246784-q1Az">
-                                 Shiseido Elixir 2019 Wechat Mini Program Campaign
+                                 <span class="lang-en">Shiseido Elixir 2019 Wechat Mini Program Campaign</span>
+                                 <span class="lang-ja">資生堂 Elixir 2019 WeChatミニプログラム キャンペーン</span>
                              </a>
-                         </li> 
-                         <li> 
-                             <span class="fa-li"><i class="fas fa-check"></i></span> 
+                         </li>
+                         <li>
+                             <span class="fa-li"><i class="fas fa-check"></i></span>
                              <!-- <a href="https://www.linkedin.com/posts/casper-teo_galaxymacau-fugumobile-elves-activity-6601336425461977089-4q2r"> -->
 							 <a href="./video/galaxymacau2019.mp4">
-                                 Galaxy Macau 2019 Christmas Campaign in Promenade Shops
-                             </a> 
-                         </li> 
-                         <li> 
-                             <span class="fa-li"><i class="fas fa-check"></i></span> 
+                                 <span class="lang-en">Galaxy Macau 2019 Christmas Campaign in Promenade Shops</span>
+                                 <span class="lang-ja">Galaxy Macau 2019 クリスマスキャンペーン（Promenade Shops）</span>
+                             </a>
+                         </li>
+                         <li>
+                             <span class="fa-li"><i class="fas fa-check"></i></span>
                              <a href="http://www.maniyoga.com.cn/">
-                                 Maniyoga Wechat Mini Program
-                             </a> 
+                                 <span class="lang-en">Maniyoga Wechat Mini Program</span>
+                                 <span class="lang-ja">Maniyoga WeChatミニプログラム</span>
+                             </a>
                          </li>
-						 <li> 
-                             <span class="fa-li"><i class="fas fa-check"></i></span> 
+						 <li>
+                             <span class="fa-li"><i class="fas fa-check"></i></span>
                              <a href="https://www.topgolfchina.cn/">
-                                 Topgolf Project: Miniprogram, NCR Integration, Booking system, Invoice & ERP system
-                             </a> 
-							 
+                                 <span class="lang-en">Topgolf Project: Miniprogram, NCR Integration, Booking system, Invoice & ERP system</span>
+                                 <span class="lang-ja">Topgolfプロジェクト：ミニプログラム、NCR連携、予約システム、請求・ERPシステム</span>
+                             </a>
+
                          </li>
-							- 	
+							-
 							 <a href="./video/pickupOrder.mp4">
-								 Topgolf Miniprogram: Self Pickup Order
-							 </a>						 
-                     </ul> 
-                 </div> 
+								 <span class="lang-en">Topgolf Miniprogram: Self Pickup Order</span>
+								 <span class="lang-ja">Topgolfミニプログラム：セルフピックアップ注文</span>
+							 </a>
+                     </ul>
+                 </div>
              </section>
 
              <hr class="m-0" /> 
             <!-- Education-->
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Education</h2>
+                    <h2 class="mb-5"><span class="lang-en">Education</span><span class="lang-ja">学歴</span></h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Universiti Tunku Abdul Rahman (UTAR), Malaysia</h3>
-                            <div class="subheading mb-3">Bachelor's Degree of Computer Science & Information Technology</div>
+                            <h3 class="mb-0"><span class="lang-en">Universiti Tunku Abdul Rahman (UTAR), Malaysia</span><span class="lang-ja">トゥンク・アブドゥル・ラーマン大学（UTAR、マレーシア）</span></h3>
+                            <div class="subheading mb-3"><span class="lang-en">Bachelor's Degree of Computer Science & Information Technology</span><span class="lang-ja">コンピュータサイエンス・情報技術 学士</span></div>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">January 2008 - March 2010</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary"><span class="lang-en">January 2008 - March 2010</span><span class="lang-ja">2008年1月 〜 2010年3月</span></span></div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Tunku Abdul Rahman College (Kuala Lumpur main campus)</h3>
-                            <div class="subheading mb-3">Diploma of Computer Science</div>
+                            <h3 class="mb-0"><span class="lang-en">Tunku Abdul Rahman College (Kuala Lumpur main campus)</span><span class="lang-ja">トゥンク・アブドゥル・ラーマン カレッジ（クアラルンプール本校）</span></h3>
+                            <div class="subheading mb-3"><span class="lang-en">Diploma of Computer Science</span><span class="lang-ja">コンピュータサイエンス ディプロマ</span></div>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">May 2004 - June 2006</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary"><span class="lang-en">May 2004 - June 2006</span><span class="lang-ja">2004年5月 〜 2006年6月</span></span></div>
                     </div>
                 </div>
             </section>
             <hr class="m-0" />
             <!-- Skills-->
-            <section class="resume-section" id="skills"> 
-                 <div class="resume-section-content"> 
-                     <h2 class="mb-5">Skills</h2> 
-                     <div class="subheading mb-3">Programming Languages & Related Tools</div> 
+            <section class="resume-section" id="skills">
+                 <div class="resume-section-content">
+                     <h2 class="mb-5"><span class="lang-en">Skills</span><span class="lang-ja">スキル</span></h2>
+                     <div class="subheading mb-3"><span class="lang-en">Programming Languages & Related Tools</span><span class="lang-ja">プログラミング言語 & 関連ツール</span></div>
                      <ul class="list-inline dev-icons"> 
                          <li class="list-inline-item" title="PHP"><i class="fab fa-php" title="PHP"></i></li>
                          <li class="list-inline-item" title="ASP.Net, C#, MVC"><i class="devicon-dot-net-plain-wordmark"></i></li>
                          <li class="list-inline-item" title="JAVA"><i class="devicon-java-plain-wordmark"></i></li>
-                         <li class="list-inline-item" title="MySQL, SQLServer, DB2"><i class="devicon-azuresqldatabase-plain"></i>
-						 <!-- <i class="fas fa-database"></i> -->
-						 </li> 
+                         <li class="list-inline-item" title="MySQL, SQLServer, DB2"><i class="devicon-azuresqldatabase-plain"></i></li> 
 
                          <li class="list-inline-item" title="HTML"><i class="fab fa-html5"></i></li> 
                          <li class="list-inline-item" title="CSS"><i class="fab fa-css3-alt"></i></li> 
@@ -216,32 +292,31 @@
                          <li class="list-inline-item" title="Revision Control Software: Github, SVN tortoise"><i class="fab fa-git-square"></i></li>
 						 <li class="list-inline-item" title="Jira"><i class="devicon-jira-plain-wordmark"></i></li>
 						 <li class="list-inline-item" title="AI"><i class="fa-brands fa-openai"></i></li>
-                         <!--<li class="list-inline-item" ><i class="fas fa-server"></i></li>-->
                      </ul>
                      <br />
-                     <div class="subheading mb-3">Languages</div> 
-                     <ul class="fa-ul mb-0"> 
+                     <div class="subheading mb-3"><span class="lang-en">Languages</span><span class="lang-ja">言語</span></div>
+                     <ul class="fa-ul mb-0">
                          <li>
-                             <span class="fa-li"><i class="far fa-dot-circle"></i></span> 
-                             English
-                         </li> 
-                         <li> 
-                             <span class="fa-li"><i class="far fa-dot-circle"></i></span> 
-                             Chinese
-                         </li> 
-                         <li> 
-                             <span class="fa-li"><i class="far fa-dot-circle"></i></span> 
-                             Cantonese
-                         </li> 
-                         <li> 
-                             <span class="fa-li"><i class="far fa-dot-circle"></i></span> 
-                             Malay
+                             <span class="fa-li"><i class="far fa-dot-circle"></i></span>
+                             <span class="lang-en">English</span><span class="lang-ja">英語</span>
                          </li>
-						 <li> 
-                             <span class="fa-li"><i class="far fa-dot-circle"></i></span> 
-                             Japanese (Basic)
-                         </li> 
-                     </ul> 
+                         <li>
+                             <span class="fa-li"><i class="far fa-dot-circle"></i></span>
+                             <span class="lang-en">Chinese</span><span class="lang-ja">中国語</span>
+                         </li>
+                         <li>
+                             <span class="fa-li"><i class="far fa-dot-circle"></i></span>
+                             <span class="lang-en">Cantonese</span><span class="lang-ja">広東語</span>
+                         </li>
+                         <li>
+                             <span class="fa-li"><i class="far fa-dot-circle"></i></span>
+                             <span class="lang-en">Malay</span><span class="lang-ja">マレー語</span>
+                         </li>
+						 <li>
+                             <span class="fa-li"><i class="far fa-dot-circle"></i></span>
+                             <span class="lang-en">Japanese (Basic)</span><span class="lang-ja">日本語（初級）</span>
+                         </li>
+                     </ul>
                  </div> 
              </section>
              <hr class="m-0" /> 
@@ -310,5 +385,21 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <!-- Language switcher script -->
+        <script>
+            (function () {
+                var saved = null;
+                try { saved = localStorage.getItem('siteLang'); } catch (e) {}
+                if (saved === 'ja') {
+                    document.body.classList.add('lang-ja');
+                    document.documentElement.setAttribute('lang', 'ja');
+                }
+            })();
+            function toggleLang() {
+                var isJa = document.body.classList.toggle('lang-ja');
+                document.documentElement.setAttribute('lang', isJa ? 'ja' : 'en');
+                try { localStorage.setItem('siteLang', isJa ? 'ja' : 'en'); } catch (e) {}
+            }
+        </script>
     </body>
 </html>
